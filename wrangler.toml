@@ -4,3 +4,13 @@ compatibility_date = "2024-04-30"
 
 [env.production.vars]
 API_HOST = "https://telegra.ph"
+
+# 📥 1. 绑定用于存图片的 KV 空间
+[[kv_namespaces]]
+binding = "img_kv"
+id = "b23bea2b559e4367bd7ee7fac5574622"
+
+# 🔒 2. 绑定用于存登录认证的 KV 空间
+[[kv_namespaces]]
+binding = "auth_kv"
+id = "a27aa2f6a2ef42a8bfe3373e57530661"

@@ -2,15 +2,17 @@ name = "cf-image-hosting"
 pages_build_output_dir = "./dist"
 compatibility_date = "2024-04-30"
 
-[env.production.vars]
-API_HOST = "https://telegra.ph"
+# 🌍 统一归入生产环境配置
+[env.production]
+# 这里的变量原本在 .vars 下面，我们可以直接合并或者写在 env.production 作用域下
+vars = { API_HOST = "https://telegra.ph" }
 
-# 📥 1. 绑定用于存图片的 KV 空间
-[[kv_namespaces]]
+# 📥 将图片 KV 严格绑定在生产环境下
+[[env.production.kv_namespaces]]
 binding = "img_kv"
 id = "b23bea2b559e4367bd7ee7fac5574622"
 
-# 🔒 2. 绑定用于存登录认证的 KV 空间
-[[kv_namespaces]]
+# 🔒 将认证 KV 严格绑定在生产环境下
+[[env.production.kv_namespaces]]
 binding = "auth_kv"
 id = "a27aa2f6a2ef42a8bfe3373e57530661"
